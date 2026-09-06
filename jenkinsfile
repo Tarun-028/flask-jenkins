@@ -20,5 +20,12 @@ pipeline {
                 sh './venv/bin/python -m pytest -v'
             }
         }
+stage('Deploy') {
+    steps {
+        sh 'echo "Deploying Flask application..."'
+        sh 'nohup ./venv/bin/python app.py > app.log 2>&1 &'
     }
+}
+    }
+
 }
